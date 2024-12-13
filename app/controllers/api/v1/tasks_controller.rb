@@ -20,6 +20,11 @@ class Api::V1::TasksController < ApplicationController
     render json: Task.delete(params[:id])
   end
   
+  def index
+    tasks = Task.all
+    render json: TaskSerializer.format_tasks(tasks)
+  end
+
   private
 
   def task_params
